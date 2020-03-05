@@ -11,8 +11,8 @@ app.use(cors());
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true }
-);
+mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }).catch(err => console.log(err));
+// mongoose .connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, }) .then(() => console.log('MongoDB Connected!')) .catch(err => { err => console.log(err) }) 
 const connection = mongoose.connection;
 connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
